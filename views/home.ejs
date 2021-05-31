@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/home.css">
+    <title><%= title %></title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><%= title %></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <% if (locals.user) { %>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/signout">Signout</a>
+                    </li>
+                </ul>
+            </div>
+
+            <% }else{ %>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user/signin">Signin</a>
+                    </li>
+                </ul>
+            </div>
+
+            <% } %>
+
+
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+        <div id="post-feed">
+
+            <form action="/post/create-post" method="POST">
+                <textarea name="content" cols="30" rows="3" placeholder="type here ....">
+
+                </textarea>
+
+                <button class="btn" type="submit"> Post </button>
+            </form>
+        </div>
+    </div>
+
+    <% if(locals.user)
+    {%>
+
+
+    <div class="container">
+        <ul>
+            <% for(let i of post){%>
+
+            <li>
+                <p>
+                    <h1> <%=i.content %></h1>
+                    <br>
+                    <small>
+                        <%=i.user.name %>
+                    </small>
+                </p>
+
+            </li>
+
+            <%}%>
+        </ul>
+    </div>
+        
+        
+    <%}%>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+body{
+
+    margin: 0;
+    background-color: cornsilk;
+
+    h1{
+        margin: auto;
+        color: lightcoral;
+    }
+
+    .navbar{
+        background-color: lightcoral;
+        color: white;
+    }
+    .collapse navbar-collapse{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
