@@ -6,5 +6,6 @@ const PostController=require('../controllers/post_controller');
 router.post('/create-post',passport.checkAuthentication, PostController.createPost);
 router.get('/postit',PostController.Postit);
 
+
 console.log('inside post router');
 module.exports=router;

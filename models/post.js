@@ -19,7 +19,15 @@ const postSchema=new mongoose.Schema({
         //which schema should it refer
         ref:'User'
 
-    }
+    },
+
+    comments:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'comment'
+        }
+    ]
+
 },{
     timestamps:true
 });

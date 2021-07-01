@@ -1,4 +1,5 @@
 const Post=require('../models/post');
+const comment=require('../models/comment');
 module.exports.home=function(req,res){
     // console.log(req.cookies);
     // // res.cookie('id',25);
@@ -19,7 +20,14 @@ module.exports.home=function(req,res){
     // });
 
     // finding posts and populating User schema of each postwith iy
-    Post.find({}).populate('user').exec(function(err,posts){
+    Post.find({})
+    .populate('user')
+    .populate({
+        path:'comments',
+        populate:({
+            path:'user'
+        })
+    }).exec(function(err,posts){
 
         if(err){
             console.log(err);
@@ -32,6 +40,8 @@ module.exports.home=function(req,res){
             post:posts
         });
     });
+
+    
 
 
     

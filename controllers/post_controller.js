@@ -1,6 +1,7 @@
 // requiring post schema
 
 const Post=require('../models/post');
+const comment = require('../models/comment');
 
 module.exports.createPost=function(req,res){
 
@@ -30,3 +31,7 @@ module.exports.Postit=function(req,res){
 
 
 }
+
+ 
+
+ 

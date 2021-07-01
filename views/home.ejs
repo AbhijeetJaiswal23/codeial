@@ -82,6 +82,30 @@
                     </small>
                 </p>
 
+                <p class="comments">
+
+                    <% for(let j of i.comments){%>
+                        
+                        <p>
+                            <small><%=j.user.name %></small>
+                        <h4><%= j.content %></h4>
+                        </p>
+                        
+                        
+                        <%}%>
+                      
+                </p>
+
+                <p>
+                    <form action="/comment/PostComment" method="POST">
+
+                        <input type="text" name="content" placeholder="type comment..">
+                        <input type="hidden" name="post" value="<%= i._id %>">
+                        <button type="submit">post</button>
+
+                    </form>
+                </p>
+
             </li>
 
             <%}%>
